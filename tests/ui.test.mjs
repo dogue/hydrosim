@@ -3,9 +3,18 @@ import assert from 'node:assert/strict';
 import {build} from 'esbuild';
 import {JSDOM,VirtualConsole} from 'jsdom';
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
-const result=await build({entryPoints:['src/main.tsx'],bundle:true,format:'iife',write:false,outdir:'/tmp/hydrosim-ui-test',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'}});
-const source=result.outputFiles.find(x=>x.path.endsWith('.js')).text;
-const css=result.outputFiles.find(x=>x.path.endsWith('.css')).text;
+let source,css;
+if(process.env.HYDROSIM_TEST_PRODUCTION==='1'){
+ const html=await readFile('dist/index.html','utf8');
+ const script=html.match(/<script[^>]*src="([^"]+)"/)[1];
+ const stylesheet=html.match(/<link[^>]*href="([^"]+\.css)"/)[1];
+ source=await readFile('dist/'+script.replace(/^\.\//,''),'utf8');
+ css=await readFile('dist/'+stylesheet.replace(/^\.\//,''),'utf8');
+}else{
+ const result=await build({entryPoints:['src/main.tsx'],bundle:true,format:'iife',write:false,outdir:'/tmp/hydrosim-ui-test',jsx:'automatic',define:{'process.env.NODE_ENV':'"production"'}});
+ source=result.outputFiles.find(x=>x.path.endsWith('.js')).text;
+ css=result.outputFiles.find(x=>x.path.endsWith('.css')).text;
+}
 const errors=[];const virtualConsole=new VirtualConsole();virtualConsole.on('jsdomError',e=>errors.push(e.message));
 const dom=new JSDOM('<!doctype html><html><head></head><body><div id="root"></div></body></html>',{url:'http://localhost/',runScripts:'outside-only',pretendToBeVisual:true,virtualConsole});
 const {window:w}=dom;const doc=w.document;
@@ -14,6 +23,7 @@ w.SVGElement.prototype.getBoundingClientRect=function(){return {x:0,y:0,left:0,t
 w.SVGElement.prototype.setPointerCapture=()=>{};
 w.eval(source);const style=doc.createElement('style');style.textContent=css;doc.head.append(style);
 const settle=()=>new Promise(r=>setTimeout(r,5));
+async function waitFor(predicate){const deadline=Date.now()+2000;while(!predicate()&&Date.now()<deadline)await settle();assert.ok(predicate(),'UI update completed');}
 async function advance(count=1){for(let i=0;i<count;i++){clock+=50;const q=[...frames.values()];frames.clear();for(const f of q)f(clock);await settle()}}
 function click(element){assert.ok(element,'control exists');element.dispatchEvent(new w.MouseEvent('click',{bubbles:true}));}
 function pointer(element,type,x=0,y=0){assert.ok(element);const e=new w.MouseEvent(type,{bubbles:true,clientX:x,clientY:y});Object.defineProperty(e,'pointerId',{value:1});element.dispatchEvent(e)}
@@ -56,17 +66,17 @@ test('variable pump exposes and connects its pilot control through the editor',a
  pointer(doc.querySelector('svg.canvas'),'pointermove',400,240);pointer(doc.querySelector('svg.canvas'),'pointerup',400,240);await settle();
  assert.ok(pump.textContent.includes('100.0% STROKE'));
  assert.equal([...doc.querySelectorAll('.hose')].at(-1).querySelector('path:nth-of-type(2)').getAttribute('stroke-dasharray'),'6 4');
- pointer(component('P1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();click(button('Stop pump'));await settle();assert.ok(pump.textContent.includes('20.0% STROKE'));
+ pointer(component('P1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();click(button('Stop pump'));await settle();await waitFor(()=>pump.textContent.includes('20.0% STROKE'));
  click(button('Load demo'));await settle();assert.deepEqual(errors,[]);
 });
 test('operate and inspect the load-sensing example through React controls',async()=>{
  click(button('Load LS demo'));await settle();assert.equal(doc.querySelectorAll('.component').length,12);
  assert.ok(component('LS1').textContent.includes('BYPASS'));assert.ok(component('CYL1'));
- click(button('Extend',component('DCV1')));await settle();assert.ok(component('FM1').textContent.includes('3.0 GPM'));
- pointer(component('CYL1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();input('Resisting load (lbf)','6500');await settle();assert.ok(component('FM1').textContent.includes('3.0 GPM'));
- pointer(component('PC1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();assert.ok(doc.querySelector('.inspector').textContent.includes('200.0 PSI'));
- pointer(component('OR1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();input('Nominal flow (GPM)','1.5');await settle();assert.ok(component('FM1').textContent.includes('1.5 GPM'));
- pointer(component('SH1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();assert.ok(doc.querySelector('.inspector').textContent.includes('Selected inletA'));
+ click(button('Extend',component('DCV1')));await settle();await waitFor(()=>component('FM1').textContent.includes('3.0 GPM'));
+ pointer(component('CYL1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();input('Resisting load (lbf)','6500');await settle();await waitFor(()=>component('FM1').textContent.includes('3.0 GPM'));
+ pointer(component('PC1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();await waitFor(()=>doc.querySelector('.inspector').textContent.includes('200.0 PSI'));
+ pointer(component('OR1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();input('Nominal flow (GPM)','1.5');await settle();await waitFor(()=>component('FM1').textContent.includes('1.5 GPM'));
+ pointer(component('SH1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();await waitFor(()=>doc.querySelector('.inspector').textContent.includes('Selected inletA'));
  const svg=doc.querySelector('svg.canvas').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('width','960');svg.setAttribute('height','700');const grid=svg.querySelector('g > .grid-bg');grid.setAttribute('x','-120');grid.setAttribute('y','-100');grid.setAttribute('width','1300');grid.setAttribute('height','1000');const style=doc.createElementNS('http://www.w3.org/2000/svg','style');style.textContent=css;svg.prepend(style);await writeFile('artifacts/ls-schematic.svg',svg.outerHTML);
  click(button('▶ Run'));await advance(8);assert.ok(extension()>3);click(button('Retract',component('DCV1')));await advance(3);assert.ok(component('SH1').textContent.includes('B → C'));
  click(button('Ⅱ Pause'));await settle();click(button('Load demo'));await settle();assert.deepEqual(errors,[]);

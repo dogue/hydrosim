@@ -51,7 +51,9 @@ There is no persistence, undo/redo, circuit import/export, or mobile-first editi
 
 The acceptance sequence covers neutral, extend, reduced flow, end-of-stroke relief, retract, pump start/stop, and pause. Additional tests cover center configurations, branch conservation, checks, instrumentation, pressure reduction, accumulator storage/discharge, motor torque, single-acting return, malformed networks, speed scaling, and display formatting.
 
-In the implementation environment, npm registry access was unavailable. Local validation used cached React 19.1.1, Vite 5.3.5, TypeScript 5.8.3, and DOM tooling; the normal package manifest uses standard npm dependencies. Chromium startup was blocked by sandbox socket restrictions. React/DOM interaction checks and SVG rendering passed, but a full Chromium layout smoke test remains unverified.
+`npm run test:production` builds with the installed project dependencies and repeats the React/DOM interaction checks against the actual minified assets in `dist/`. This checks both demonstration circuits and the editor. Chromium startup is blocked by this environment's sandbox socket restrictions, so a full Chromium layout smoke test remains unverified.
+
+The Vite configuration disables Rollup tree-shaking because Rollup 4.64 stalls analyzing this React 19 bundle. Production assets remain minified and self-contained; the measured bundle increase is approximately 0.5 KB (0.25 KB gzip). No alternate Vite installation or build command is required.
 
 ## Symbol conventions
 

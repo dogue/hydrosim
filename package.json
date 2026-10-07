@@ -9,22 +9,27 @@
     "test": "node --test --test-isolation=none tests/model.test.ts tests/ui.test.mjs tests/symbols.test.mjs",
     "test:simulation": "node --test --test-isolation=none tests/model.test.ts",
     "test:ui": "node --test --test-isolation=none tests/ui.test.mjs",
-    "test:symbols": "node --test --test-isolation=none tests/symbols.test.mjs"
+    "test:symbols": "node --test --test-isolation=none tests/symbols.test.mjs",
+    "test:production": "npm run build && node --test --test-isolation=none tests/production-ui.test.mjs"
   },
   "dependencies": {
     "react": "19.1.1",
     "react-dom": "19.1.1"
   },
   "devDependencies": {
+    "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "~5.7.3",
-    "vite": "^6.1.0",
-    "@types/node": "^22.0.0",
+    "esbuild": "^0.25.0",
     "jsdom": "^26.0.0",
-    "esbuild": "^0.25.0"
+    "typescript": "~5.7.3",
+    "vite": "^5.4.21"
   },
   "engines": {
     "node": ">=22.18.0"
+  },
+  "allowScripts": {
+    "esbuild@0.25.12": true,
+    "esbuild@0.21.5": true
   }
 }
