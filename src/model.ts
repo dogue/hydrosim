@@ -3,7 +3,7 @@ export const catalog = {
  tank:'Reservoir', pump:'Fixed pump', variablePump:'Variable pump', accumulator:'Accumulator', cylinder:'Double-acting cylinder', singleCylinder:'Single-acting cylinder', motor:'Hydraulic motor', valve22:'2/2 valve', valve32:'3/2 valve', valve42:'4/2 valve', valve43:'4/3 valve', relief:'Relief valve', reducing:'Pressure reducing valve', restriction:'Fixed orifice', flowControl:'Adjustable flow control', check:'Check valve', filter:'Filter', gauge:'Pressure tap', meter:'Inline flow meter', junction:'Junction / tee', cap:'Blocked port'
 } as const;
 export type Kind=keyof typeof catalog;
-export type Component={id:string;kind:Kind;label:string;x:number;y:number;p:Record<string,number|string|boolean>};
+export type Component={id:string;kind:Kind;label:string;x:number;y:number;rotation?:number;flipX?:boolean;flipY?:boolean;p:Record<string,number|string|boolean>};
 export type Line={id:string;from:string;to:string};
 export type Circuit={components:Component[];lines:Line[]};
 export type Reading={pressure:number;flow:number;color:string};

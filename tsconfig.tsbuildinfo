@@ -1,1 +1,1 @@
-{"root":["./src/Symbol.tsx","./src/main.tsx","./src/model.ts","./tests/model.test.ts","./vite.config.ts"],"version":"5.7.3"}
+{"root":["./src/Symbol.tsx","./src/layout.ts","./src/main.tsx","./src/model.ts","./tests/model.test.ts","./vite.config.ts"],"version":"5.7.3"}

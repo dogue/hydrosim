@@ -81,6 +81,38 @@ test('operate and inspect the load-sensing example through React controls',async
  click(button('▶ Run'));await advance(8);assert.ok(extension()>3);click(button('Retract',component('DCV1')));await advance(3);assert.ok(component('SH1').textContent.includes('B → C'));
  click(button('Ⅱ Pause'));await settle();click(button('Load demo'));await settle();assert.deepEqual(errors,[]);
 });
+test('rotation and flips keep ports, upright labels, and hoses attached without changing hydraulics',async()=>{
+ click(button('Load demo'));await settle();
+ pointer(component('CYL1'),'pointerdown');pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();
+ const paths=()=>[...doc.querySelectorAll('.hose path:nth-of-type(2)')].map(x=>x.getAttribute('d'));
+ const original=paths();const readings=doc.querySelector('.readings').textContent;
+ const check=(x,y)=>{
+  const cy=component('CYL1'),port=cy.querySelector('[data-port$=":A"]'),label=port.parentElement.querySelector('.port-label');
+  assert.equal(Number(port.getAttribute('cx')),x);assert.equal(Number(port.getAttribute('cy')),y);
+  assert.equal(label.textContent,'A');assert.equal(label.getAttribute('transform'),null);
+  assert.ok(Math.hypot(Number(label.getAttribute('x'))-x,Number(label.getAttribute('y'))-y)<22);
+  assert.equal(port.closest('.component-geometry'),null);assert.equal(cy.querySelector('.component-label').closest('.component-geometry'),null);
+  assert.ok(paths().some(d=>d.endsWith(`L${750+x} ${80+y}`)),'hose ends at transformed port');
+  assert.equal(doc.querySelector('.readings').textContent,readings);
+ };
+ click(button('Rotate right'));await settle();check(-30,-40);
+ assert.equal(component('CYL1').querySelector('.component-geometry').getAttribute('transform'),'rotate(90) scale(1,1)');
+ assert.ok(component('CYL1').querySelector('.symbol text').getAttribute('transform').includes('rotate(-90)'));
+ click(button('Flip horizontal'));await settle();check(30,-40);
+ click(button('Flip vertical'));await settle();check(30,40);
+ click(button('Reset orientation'));await settle();check(-40,30);assert.deepEqual(paths(),original);
+ for(let i=0;i<4;i++){click(button('Rotate left'));await settle();}
+ assert.deepEqual(paths(),original);
+ // A transformed terminal remains connectable through the normal port-drag interaction.
+ click(button('Rotate right'));await settle();
+ const source=component('CYL1').querySelector('[data-port$=":A"]');
+ click(button('Pressure tap',doc.querySelector('.palette')));await settle();
+ const added=[...doc.querySelectorAll('.component')].at(-1);const target=added.querySelector('[data-port]');
+ pointer(source,'pointerdown');await settle();doc.elementFromPoint=()=>target;
+ pointer(doc.querySelector('svg.canvas'),'pointerup');await settle();assert.equal(doc.querySelectorAll('.hose').length,12);
+ assert.ok(paths().at(-1).startsWith('M720 40'));
+ click(button('Load demo'));await settle();assert.deepEqual(errors,[]);
+});
 test('capture the SVG schematic for visual inspection',async()=>{
  click(button('Extend',component('DCV1')));click(button('▶ Run'));await advance(10);const svg=doc.querySelector('svg.canvas').cloneNode(true);svg.setAttribute('xmlns','http://www.w3.org/2000/svg');svg.setAttribute('width','960');svg.setAttribute('height','700');const grid=svg.querySelector('g > .grid-bg');grid.setAttribute('x','-120');grid.setAttribute('y','-100');grid.setAttribute('width','1300');grid.setAttribute('height','1000');const style=doc.createElementNS('http://www.w3.org/2000/svg','style');style.textContent=css;svg.prepend(style);
  await mkdir('artifacts',{recursive:true});await writeFile('artifacts/demo-schematic.svg',svg.outerHTML);await writeFile('artifacts/ui-snapshot.html',dom.serialize());assert.deepEqual(errors,[]);w.close();
