@@ -144,8 +144,8 @@ export function Symbol({o,s}:{o:Component;s:State}) {
   else if(k==='shuttle')body=<>
     <title>Higher pressure A or B connects to C; the ball seals the lower-pressure inlet.</title>
     <rect x="-28" y="-18" width="56" height="36" fill={paper}/>
-    <path d="M-45 0H-22M22 0H45M0 -40V-18M-22 -10L-12 0L-22 10M22 -10L12 0L22 10"/>
-    <circle data-symbol-part="shuttle-ball" cx={s.selected[o.id]==='B'?-20:20} r="7" fill={paper}/>
+    <path d="M-45 0H-22M22 0H45M0 -40V-18M-12 -10L-22 0L-12 10M12 -10L22 0L12 10"/>
+    <circle data-symbol-part="shuttle-ball" cx={s.selected[o.id]==='B'?-12:12} r="7" fill={paper}/>
     <text y="48">{s.selected[o.id]||'A'} → C</text>
   </>;
   else if(k==='compensator'||k==='lsBypass')body=<>
