@@ -170,10 +170,11 @@ export function isPilotLine(c:Circuit,l:Line):boolean{
 export function loadSensingDemo():Circuit{
  const c=demo();const find=(kind:Kind)=>c.components.find(o=>o.kind===kind)!;
  const pump=find('pump'),v=find('valve43'),cy=find('cylinder'),fc=find('flowControl'),tank=find('tank'),j=find('junction');
- pump.p.flow=8;v.p.center='closed';fc.kind='restriction';fc.label='OR1';fc.p.limit=3;fc.p.referenceDrop=200;fc.x=660;fc.y=140;cy.x=820;
+ // Keep enough minimum output for 3 GPM metering plus bypass flow and passage losses.
+ pump.kind='variablePump';pump.label='VP1';pump.p.flow=8;pump.p.minStroke=75;v.p.center='closed';fc.kind='restriction';fc.label='OR1';fc.p.limit=3;fc.p.referenceDrop=200;fc.x=660;fc.y=140;cy.x=820;
  const pc={...create('compensator',490,140),label:'PC1'},sh={...create('shuttle',820,490),label:'SH1'},ls={...create('lsBypass',530,510),label:'LS1'};
  c.components.push(pc,sh,ls);c.lines=c.lines.filter(l=>!(l.from===v.id+':A'&&l.to===fc.id+':A'));
- const pairs:[Component,string,Component,string][]=[[v,'A',pc,'A'],[pc,'B',fc,'A'],[cy,'A',pc,'X'],[cy,'A',sh,'A'],[cy,'B',sh,'B'],[sh,'C',ls,'X'],[j,'P',ls,'P'],[ls,'T',tank,'T']];
+ const pairs:[Component,string,Component,string][]=[[v,'A',pc,'A'],[pc,'B',fc,'A'],[cy,'A',pc,'X'],[cy,'A',sh,'A'],[cy,'B',sh,'B'],[sh,'C',ls,'X'],[j,'P',ls,'P'],[ls,'T',tank,'T'],[sh,'C',pump,'X']];
  c.lines.push(...pairs.map(([a,p,b,q],i)=>({id:'ls'+i,from:a.id+':'+p,to:b.id+':'+q})));
  return c;
 }

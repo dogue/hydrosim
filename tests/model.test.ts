@@ -89,10 +89,11 @@ test('compensated flow stays steady as load changes and falls under starvation',
 
 test('load-sensing example maintains margin, load-independent metering, reverses and relieves at stroke limit',()=>{
  const c=loadSensingDemo(),get=(kind:Component['kind'])=>c.components.find(o=>o.kind===kind)!;
- const pump=get('pump'),v=get('valve43'),cy=get('cylinder'),pc=get('compensator'),ls=get('lsBypass'),sh=get('shuttle'),orifice=get('restriction');
+ const pump=get('variablePump'),v=get('valve43'),cy=get('cylinder'),pc=get('compensator'),ls=get('lsBypass'),sh=get('shuttle'),orifice=get('restriction');
  let s=step(c,initial(),0);assert.equal(s.motion[cy.id].speed,0);assert.ok(s.ports[pump.id+':P'].pressure>200&&s.ports[pump.id+':P'].pressure<230);assert.ok(s.active[ls.id]);
  v.p.position=1;
- for(const load of [1000,4000,6500]){cy.p.load=load;s=step(c,initial(),0);assert.ok(Math.abs(s.ports[pc.id+':B'].pressure-s.ports[pc.id+':X'].pressure-200)<1);assert.ok(Math.abs(flow(c,s,orifice)-3)<0.03);assert.equal(s.selected[sh.id],'A');assert.ok(Math.abs(s.lines.l1.flow-8)<0.01);assert.ok(Math.abs(s.lines.ls7.flow+flow(c,s,orifice)-8)<0.01)}
+ assert.equal(s.stroke[pump.id],0.75);assert.ok(isPilotLine(c,c.lines.find(l=>l.to===pump.id+':X')!));
+ for(const load of [1000,4000,6500]){cy.p.load=load;s=step(c,initial(),0);assert.ok(Math.abs(s.ports[pc.id+':B'].pressure-s.ports[pc.id+':X'].pressure-200)<1);assert.ok(Math.abs(flow(c,s,orifice)-3)<0.03);assert.equal(s.selected[sh.id],'A');const output=8*s.stroke[pump.id];assert.ok(Math.abs(s.lines.l1.flow-output)<0.01);assert.ok(Math.abs(s.lines.ls7.flow+flow(c,s,orifice)-output)<0.01);assert.ok(load===1000?s.stroke[pump.id]===0.75:s.stroke[pump.id]>0.99)}
  cy.p.load=4000;orifice.p.limit=1.5;s=step(c,initial(),0);assert.ok(Math.abs(flow(c,s,orifice)-1.5)<0.03);
  s.motion[cy.id].position=1;s=step(c,s,0);assert.equal(s.motion[cy.id].speed,0);assert.ok(s.active[get('relief').id]);assert.equal(flow(c,s,orifice),0);
  v.p.position=-1;s=step(c,s,0.05);assert.ok(s.motion[cy.id].speed<0);assert.equal(s.selected[sh.id],'B');assert.ok(c.lines.filter(l=>l.from.startsWith(sh.id+':')||l.to.startsWith(sh.id+':')).every(l=>isPilotLine(c,l)));
