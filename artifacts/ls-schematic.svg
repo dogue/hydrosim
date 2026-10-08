@@ -1,2 +1,487 @@
-<svg class="canvas" aria-label="Hydraulic schematic canvas" xmlns="http://www.w3.org/2000/svg" width="960" height="700"><style>*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;color:#263543;background:#f3f5f7;font-size:13px}button,input,select{font:inherit}button{cursor:pointer;background:#fff;border:1px solid #cbd4dd;border-radius:3px;padding:7px 10px;color:#263543}button:hover{background:#eaf0f5;border-color:#8ba2b8}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid #3978b0;outline-offset:2px}.app{height:100dvh;display:flex;flex-direction:column;min-height:550px}header{display:flex;align-items:center;gap:28px;padding:14px 18px;background:#fff;border-bottom:1px solid #ccd5dd;min-height:74px}.brand{display:flex;gap:10px;align-items:center;min-width:192px}.brandmark{background:#244f72;color:#fff;font-size:24px;font-weight:800;padding:5px 12px;border-radius:3px}.brand strong{font-size:21px;letter-spacing:-.7px}.version{margin-left:8px;font-size:11px;font-weight:400;color:#8794a0;white-space:nowrap}.brand small{display:block;font-size:9px;letter-spacing:1.3px;color:#6d7e8d;margin-top:2px}.toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap}.primary,button.active{color:#fff;background:#245d88;border-color:#245d88}.primary:hover,button.active:hover{background:#194b72}.toolbar label{display:flex;align-items:center;gap:7px;margin-left:8px}.toolbar select{padding:6px;border:1px solid #cbd4dd;border-radius:3px}.separator{height:24px;border-left:1px solid #d9e0e6;margin:0 5px}.runstatus{margin-left:auto;font-size:10px;letter-spacing:1px;white-space:nowrap;display:flex;align-items:center;gap:7px}.runstatus i{width:6px;height:6px;border-radius:50%;background:#99a5b0}.runstatus i.live{background:#289967}main{display:grid;grid-template-columns:212px minmax(300px,1fr) 264px;flex:1;min-height:0}.palette,.inspector{overflow-y:auto;background:#fff;padding:18px 14px}.palette{border-right:1px solid #d4dce3}.inspector{border-left:1px solid #d4dce3;padding:18px}.panel-title{font-size:10px;letter-spacing:1.4px;color:#688095;font-weight:700;margin-bottom:14px}.muted{color:#6b7a88;font-size:12px;line-height:1.65}.palette h3{margin:20px 0 7px;font-size:11px;color:#506577}.palette section button{display:flex;align-items:center;gap:6px;width:100%;text-align:left;border:0;padding:8px 3px;background:transparent;font-size:12px}.palette section button:hover{background:#edf3f8}.mini{flex:0 0 26px;text-align:center;font-size:21px;line-height:18px;color:#42647e}.palette-note{font-size:10px;line-height:1.7;color:#8794a0;padding-top:22px}.workspace{display:flex;flex-direction:column;min-width:0;min-height:0}.canvasbar{height:44px;flex-shrink:0;padding:7px 12px;background:#f0f4f7;border-bottom:1px solid #d8e0e7;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#657686}.canvasbar&gt;div{display:flex;gap:8px;align-items:center}.canvasbar button{padding:3px 7px;font-size:11px}.canvas{width:100%;flex:1;min-height:0;touch-action:none;-webkit-user-select:none;user-select:none}.component{cursor:move}.component-label{font-size:12px;font-weight:650;fill:#263543;text-anchor:middle}.symbol text{stroke:none;fill:#526577;font-size:10px;text-anchor:middle;font-family:system-ui}.symbol{pointer-events:none}.port{fill:#fff;stroke:#55758f;stroke-width:1.8;cursor:crosshair}.port:hover,.port-active{fill:#2b9569;stroke:#23784d}.port.compatible{stroke:#2b9569;stroke-width:2.5}.port-label{font-size:9px;text-anchor:middle;fill:#5a7287;pointer-events:none}.hose{cursor:pointer}.line-value{font-size:10px;fill:#344d64;paint-order:stroke;stroke:#f8fafc;stroke-width:4px}.instrument-overlay{font-size:10px;fill:#315d80;text-anchor:middle;paint-order:stroke;stroke:#f8fafc;stroke-width:6px;pointer-events:none}.legend{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;background:#fff;border-top:1px solid #d4dce3;font-size:10px;padding:11px 8px;color:#617181}.legend span{display:flex;align-items:center;gap:5px}.legend i{height:3px;width:17px}.flow-key{color:#8794a0}.canvas-help{font-size:10px;color:#788895;padding:7px 10px;text-align:center;border-top:1px solid #e4e9ee;background:#f6f8fa}.inspector h2{font-size:17px;line-height:1.4;margin:0 0 18px;font-weight:600}.inspector h3{font-size:11px;font-weight:650;color:#567087;margin:22px 0 12px}.inspector p{line-height:1.7}.field{display:block;font-size:11px;color:#526779;margin:14px 0}.field input,.field select{display:block;margin-top:6px;width:100%;padding:8px;border:1px solid #cbd4dd;border-radius:3px;color:#263543;background:#fff}.readings{border-top:1px solid #dee5eb;border-bottom:1px solid #dee5eb;padding:7px 0}.readings&gt;div{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:7px 0;font-size:11px;color:#718292}.readings strong{color:#2e526e;font-size:12px;font-weight:600;font-variant-numeric:tabular-nums}.spool{display:flex;gap:3px}.spool button{flex:1;padding:7px 3px;font-size:11px}.inline-controls .spool button{font-size:9px;padding:4px 2px}.wide{width:100%;margin:6px 0}.danger{color:#ae4545;margin-top:24px;border-color:#dfcaca}input[type=range]{width:100%;accent-color:#245d88}.guide{border-top:1px solid #dbe3e9;margin-top:22px}.guide ol{padding-left:18px;font-size:12px;line-height:1.7;color:#5e7181}.guide li{padding:5px 0}.tip{border-left:3px solid #7b9db8;padding:10px 12px;background:#f0f5f9;font-size:11px;line-height:1.6;margin-top:24px;color:#597186}@media (max-width:1150px){header{gap:15px}.runstatus{display:none}main{grid-template-columns:185px minmax(300px,1fr) 225px}.toolbar button{font-size:11px}.brand{min-width:175px}.legend{gap:9px}}@media (max-width:820px){header{flex-wrap:wrap;padding:8px 12px;gap:10px}.brand{min-width:100%}.app{min-height:700px;min-width:650px}main{grid-template-columns:145px minmax(280px,1fr) 205px}.palette{padding:15px 8px}.palette section button{font-size:10px}.canvasbar&gt;span{display:none}.inspector{padding:15px 12px}.canvas-help{font-size:9px}}.layout-controls{display:grid;grid-template-columns:1fr 1fr;gap:6px}.layout-controls button{padding:7px 4px;font-size:11px}.layout-controls button:last-child{grid-column:1 / -1}
-</style><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="0" cy="0" r="0.9" fill="#cdd6df"></circle></pattern><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#263543"></path></marker></defs><rect class="grid-bg" width="100%" height="100%" fill="#f8fafc"></rect><g transform="translate(46.15384615384615,86.92307692307689) scale(0.9230769230769231)"><rect class="grid-bg" x="-120" y="-100" width="1300" height="1000" fill="url(#grid)"></rect><g class="hose"><title>0.0 PSI · 8.0 GPM · forward</title><path d="M140 470L140 446H71V330L95 330" stroke="transparent" stroke-width="16" fill="none"></path><path d="M140 470L140 446H71V330L95 330" stroke="#289967" stroke-width="3" fill="none"></path><path d="M140 470L140 446H71V330L95 330" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2643.1221737493993" fill="none"></path><text class="line-value" x="124.5" y="392"></text></g><g class="hose"><title>1,138.8 PSI · 8.0 GPM · forward</title><path d="M185 330L209 330H237.5V330H266L290 330" stroke="transparent" stroke-width="16" fill="none"></path><path d="M185 330L209 330H237.5V330H266L290 330" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M185 330L209 330H237.5V330H266L290 330" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2643.1221737493993" fill="none"></path><text class="line-value" x="244.5" y="322"></text></g><g class="hose"><title>1,138.6 PSI · 1.5 GPM · forward</title><path d="M370 330L394 330H412.5V330H431L455 330" stroke="transparent" stroke-width="16" fill="none"></path><path d="M370 330L394 330H412.5V330H431L455 330" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M370 330L394 330H412.5V330H431L455 330" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1108.637173027159" fill="none"></path><text class="line-value" x="419.5" y="322"></text></g><g class="hose"><title>1,138.9 PSI · 0.0 GPM · forward · static</title><path d="M330 360L330 384H261V500L285 500" stroke="transparent" stroke-width="16" fill="none"></path><path d="M330 360L330 384H261V500L285 500" stroke="#dc4144" stroke-width="3" fill="none"></path><text class="line-value" x="314.5" y="422"></text></g><g class="hose"><title>1,138.9 PSI · 0.0 GPM · forward · static</title><path d="M290 330L266 330V224H330L330 200" stroke="transparent" stroke-width="16" fill="none"></path><path d="M290 330L266 330V224H330L330 200" stroke="#dc4144" stroke-width="3" fill="none"></path><text class="line-value" x="317" y="257"></text></g><g class="hose"><title>0.0 PSI · 0.0 GPM · forward · static</title><path d="M375 500L399 500V446H140L140 470" stroke="transparent" stroke-width="16" fill="none"></path><path d="M375 500L399 500V446H140L140 470" stroke="#9ba5b0" stroke-width="3" fill="none"></path><text class="line-value" x="264.5" y="477"></text></g><g class="hose"><title>1,138.3 PSI · 1.5 GPM · forward</title><path d="M545 330L569 330V359H650L650 335" stroke="transparent" stroke-width="16" fill="none"></path><path d="M545 330L569 330V359H650L650 335" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M545 330L569 330V359H650L650 335" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1108.637173027159" fill="none"></path><text class="line-value" x="604.5" y="324.5"></text></g><g class="hose"><title>0.1 PSI · 1.1 GPM · forward</title><path d="M710 335L710 359V402.5H140V446L140 470" stroke="transparent" stroke-width="16" fill="none"></path><path d="M710 335L710 359V402.5H140V446L140 470" stroke="#287cc5" stroke-width="3" fill="none"></path><path d="M710 335L710 359V402.5H140V446L140 470" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1020.2723243863697" fill="none"></path><text class="line-value" x="432" y="394.5"></text></g><g class="hose"><title>924.0 PSI · 1.5 GPM · forward</title><path d="M705 140L729 140V134H780L780 110" stroke="transparent" stroke-width="16" fill="none"></path><path d="M705 140L729 140V134H780L780 110" stroke="#bb930a" stroke-width="3" fill="none"></path><path d="M705 140L729 140V134H780L780 110" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1108.637173027159" fill="none"></path><text class="line-value" x="749.5" y="117"></text></g><g class="hose"><title>1.3 PSI · 1.1 GPM · reverse</title><path d="M710 265L710 241V187.5H860V134L860 110" stroke="transparent" stroke-width="16" fill="none"></path><path d="M710 265L710 241V187.5H860V134L860 110" stroke="#287cc5" stroke-width="3" fill="none"></path><path d="M710 265L710 241V187.5H860V134L860 110" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="1020.2723243863697" fill="none"></path><text class="line-value" x="792" y="179.5"></text></g><g class="hose"><title>1,136.7 PSI · 1.5 GPM · forward</title><path d="M650 265L650 241H421V140L445 140" stroke="transparent" stroke-width="16" fill="none"></path><path d="M650 265L650 241H421V140L445 140" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M650 265L650 241H421V140L445 140" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1108.637173027159" fill="none"></path><text class="line-value" x="554.5" y="194.5"></text></g><g class="hose"><title>1,123.8 PSI · 1.5 GPM · forward</title><path d="M535 140L559 140H575V140H591L615 140" stroke="transparent" stroke-width="16" fill="none"></path><path d="M535 140L559 140H575V140H591L615 140" stroke="#bb930a" stroke-width="3" fill="none"></path><path d="M535 140L559 140H575V140H591L615 140" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1108.637173027159" fill="none"></path><text class="line-value" x="582" y="132"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M780 110L780 134H629V204H478L478 180" stroke="transparent" stroke-width="16" fill="none"></path><path d="M780 110L780 134H629V204H478L478 180" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="636" y="137"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M780 110L780 134H751V490L775 490" stroke="transparent" stroke-width="16" fill="none"></path><path d="M780 110L780 134H751V490L775 490" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="784.5" y="292"></text></g><g class="hose"><title>1.3 PSI · 0.0 GPM · forward · static</title><path d="M860 110L860 134H889V490L865 490" stroke="transparent" stroke-width="16" fill="none"></path><path d="M860 110L860 134H889V490L865 490" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="869.5" y="292"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M820 450L820 426H675V574H530L530 550" stroke="transparent" stroke-width="16" fill="none"></path><path d="M820 450L820 426H675V574H530L530 550" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="682" y="492"></text></g><g class="hose"><title>1,137.9 PSI · 6.5 GPM · forward</title><path d="M290 330L266 330H363.5V510H461L485 510" stroke="transparent" stroke-width="16" fill="none"></path><path d="M290 330L266 330H363.5V510H461L485 510" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M290 330L266 330H363.5V510H461L485 510" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2289.662779186243" fill="none"></path><text class="line-value" x="394.5" y="412"></text></g><g class="hose"><title>0.3 PSI · 6.5 GPM · forward</title><path d="M575 510L599 510V446H140L140 470" stroke="transparent" stroke-width="16" fill="none"></path><path d="M575 510L599 510V446H140L140 470" stroke="#287cc5" stroke-width="3" fill="none"></path><path d="M575 510L599 510V446H140L140 470" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2289.662779186243" fill="none"></path><text class="line-value" x="364.5" y="482"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M820 450L820 426H480V236H140L140 260" stroke="transparent" stroke-width="16" fill="none"></path><path d="M820 450L820 426H480V236H140L140 260" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="487" y="347"></text></g><g transform="translate(140,500)" class="component" data-component="T1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-32 -25V15H32V-25M0 -30V-5M-24 5H24"></path><text x="0" y="38" transform="translate(0,38) scale(1,1) rotate(0) translate(0,-38)">0.0 PSI</text></g></g><text class="component-label" x="0" y="-46">T1</text><g><text class="port-label" x="13" y="-39">T</text><circle data-port="c31:T" aria-label="T1 port T" cx="0" cy="-30" r="6" class="port  "><title>T · 0.0 PSI · Drag to connect</title></circle></g></g><g transform="translate(140,330)" class="component" data-component="VP1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-74" width="124" height="106" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-45 0H-26M26 0H45"></path><circle r="26" fill="#f8fafc"></circle><path d="M7 -10L22 0L7 10Z" fill="currentColor"></path><path data-symbol-part="pump-pilot" d="M0 -70V-58" stroke-dasharray="4 3"></path><rect x="-12" y="-58" width="24" height="18" fill="#f8fafc"></rect><path d="M-12 -52L0 -42L12 -52M0 -40V-28"></path><path d="M-28 28L28 -28" marker-end="url(#arrow)"></path><circle cx="-10" r="4" fill="#289967" stroke="none"></circle><text x="0" y="49" transform="translate(0,49) scale(1,1) rotate(0) translate(0,-49)">100.0% STROKE</text></g></g><text class="component-label" x="0" y="-88">VP1</text><g><text class="port-label" x="-58" y="4">T</text><circle data-port="c32:T" aria-label="VP1 port T" cx="-45" cy="0" r="6" class="port  "><title>T · 0.0 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">P</text><circle data-port="c32:P" aria-label="VP1 port P" cx="45" cy="0" r="6" class="port  "><title>P · 1,138.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="-79">X</text><circle data-port="c32:X" aria-label="VP1 port X" cx="0" cy="-70" r="6" class="port  "><title>X · 923.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(330,330)" class="component" data-component="J1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-40 0H40M0 0V30"></path><circle r="5" fill="currentColor"></circle></g></g><text class="component-label" x="0" y="-46">J1</text><g><text class="port-label" x="-53" y="4">P</text><circle data-port="c33:P" aria-label="J1 port P" cx="-40" cy="0" r="6" class="port  "><title>P · 1,138.2 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="53" y="4">A</text><circle data-port="c33:A" aria-label="J1 port A" cx="40" cy="0" r="6" class="port  "><title>A · 1,138.7 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="47">T</text><circle data-port="c33:T" aria-label="J1 port T" cx="0" cy="30" r="6" class="port  "><title>T · 1,138.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(330,500)" class="component" data-component="RV1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Normally closed; upstream pressure A controls opening.</title><path d="M-45 0H-20M20 0H45"></path><rect x="-20" y="-20" width="40" height="40" fill="#f8fafc"></rect><path d="M-14 9L14 9" marker-end="url(#arrow)"></path><g data-symbol-part="adjustable-spring"><path d="M0 -20V-27L-6 -30L6 -34L-6 -38L6 -42L0 -45V-51"></path><path d="M-13 -27L13 -49" marker-end="url(#arrow)"></path></g><path data-symbol-part="pressure-pilot" data-sensed-port="A" d="M-32 0V32H0V20" stroke-dasharray="4 3"></path><circle cx="-32" r="2.5" fill="currentColor" stroke="none"></circle><text x="0" y="53" transform="translate(0,53) scale(1,1) rotate(0) translate(0,-53)">1,500.0 PSI</text></g></g><text class="component-label" x="0" y="-46">RV1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c34:A" aria-label="RV1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,138.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c34:B" aria-label="RV1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 0.0 PSI · Drag to connect</title></circle></g></g><g transform="translate(330,170)" class="component" data-component="PT1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cy="-5" r="23" fill="#f8fafc"></circle><path d="M0 18V30"></path><path d="M0 -5L12 -19" marker-end="url(#arrow)"></path><circle cy="-5" r="2" fill="currentColor"></circle><text x="0" y="-42" transform="translate(0,-42) scale(1,1) rotate(0) translate(0,42)">1,138.9 PSI</text></g></g><text class="component-label" x="0" y="-46">PT1</text><g><text class="port-label" x="13" y="47">P</text><circle data-port="c35:P" aria-label="PT1 port P" cx="0" cy="30" r="6" class="port  "><title>P · 1,138.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(500,330)" class="component" data-component="FM1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-45 0H-23M23 0H45"></path><circle r="23" fill="#f8fafc"></circle><path d="M-13 -9L0 9L13 -9ZM-10 0H10"></path></g></g><text class="component-label" x="0" y="-46">FM1</text><text class="instrument-overlay" y="-38">1.5 GPM</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c36:A" aria-label="FM1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,138.5 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c36:B" aria-label="FM1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 1,138.4 PSI · Drag to connect</title></circle></g></g><g transform="translate(680,300)" class="component" data-component="DCV1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-131" y="-38" width="160" height="76" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Manual directional valve. Highlighted position is aligned with the connected ports.</title><g transform="translate(-80,0)" data-spool-position="0" data-active="false"><rect x="-20" y="-23" width="40" height="46" fill="#f8fafc"></rect><path d="M-10 23L10 -23" marker-end="url(#arrow)"></path><path d="M-10 -23L10 23" marker-end="url(#arrow)"></path></g><g transform="translate(-40,0)" data-spool-position="1" data-active="false"><rect x="-20" y="-23" width="40" height="46" fill="#f8fafc"></rect><path d="M-10 -23V-12M-16 -12H-4"></path><path d="M10 -23V-12M4 -12H16"></path><path d="M-10 23V12M-16 12H-4"></path><path d="M10 23V12M4 12H16"></path></g><g transform="translate(0,0)" data-spool-position="2" data-active="true"><rect x="-20" y="-23" width="40" height="46" fill="#dce9f7"></rect><path d="M-10 23L-10 -23" marker-end="url(#arrow)"></path><path d="M10 -23L10 23" marker-end="url(#arrow)"></path></g><path d="M-30 -35V-29H-10V-23M-30 35V29H-10V23M30 35V29H10V23"></path><path d="M30 -35V-29H10V-23"></path><g data-symbol-part="manual-lever"><path d="M-100 0H-109L-122 -18"></path><circle cx="-122" cy="-18" r="3" fill="currentColor"></circle></g><path d="M20 0H27"></path><text x="0" y="58" transform="translate(0,58) scale(1,1) rotate(0) translate(0,-58)">EXTEND</text></g></g><text class="component-label" x="0" y="-52">DCV1</text><g><text class="port-label" x="-17" y="52">P</text><circle data-port="c37:P" aria-label="DCV1 port P" cx="-30" cy="35" r="6" class="port  "><title>P · 1,138.2 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="43" y="52">T</text><circle data-port="c37:T" aria-label="DCV1 port T" cx="30" cy="35" r="6" class="port  "><title>T · 0.1 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="-17" y="-44">A</text><circle data-port="c37:A" aria-label="DCV1 port A" cx="-30" cy="-35" r="6" class="port  "><title>A · 1,136.7 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="43" y="-44">B</text><circle data-port="c37:B" aria-label="DCV1 port B" cx="30" cy="-35" r="6" class="port  "><title>B · 1.2 PSI · Drag to connect</title></circle></g><foreignObject x="-75" y="65" width="150" height="30"><div class="inline-controls"><div class="spool"><button class="">Retract</button><button class="">Neutral</button><button class="active">Extend</button></div></div></foreignObject></g><g transform="translate(660,140)" class="component" data-component="OR1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-45 0H-8M8 0H45M-14 -14Q8 0 -14 14M14 -14Q-8 0 14 14"></path><text x="0" y="47" transform="translate(0,47) scale(1,1) rotate(0) translate(0,-47)">1.5 GPM nominal</text></g></g><text class="component-label" x="0" y="-46">OR1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c38:A" aria-label="OR1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,123.8 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c38:B" aria-label="OR1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 924.1 PSI · Drag to connect</title></circle></g></g><g transform="translate(820,80)" class="component" data-component="CYL1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="190" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="-50" y="-24" width="100" height="44" fill="#f8fafc" stroke="none"></rect><path d="M50 -3V-24H-50V20H50V3M-40 30V20"></path><path d="M40 30V20"></path><path data-symbol-part="piston" d="M-16 -22V18" stroke-width="3"></path><path data-symbol-part="rod" d="M-16 -3H76V3H-16" stroke-width="2.2"></path><text x="0" y="51" transform="translate(0,51) scale(1,1) rotate(0) translate(0,-51)">3.0 in</text></g></g><text class="component-label" x="0" y="-46">CYL1</text><g><text class="port-label" x="-27" y="47">A</text><circle data-port="c39:A" aria-label="CYL1 port A" cx="-40" cy="30" r="6" class="port  "><title>A · 923.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="53" y="47">B</text><circle data-port="c39:B" aria-label="CYL1 port B" cx="40" cy="30" r="6" class="port  "><title>B · 1.3 PSI · Drag to connect</title></circle></g></g><g transform="translate(490,140)" class="component" data-component="PC1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-38" width="124" height="82" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Two-way regulator senses B against external X plus spring margin; optional reverse check.</title><path d="M-45 0H-20M20 0H45"></path><rect x="-20" y="-20" width="40" height="40" fill="#f8fafc"></rect><path d="M-12 0L12 0" marker-end="url(#arrow)"></path><path data-symbol-part="compensation-feedback" d="M32 0V-32H0V-20" stroke-dasharray="4 3"></path><path data-symbol-part="external-load-pilot" d="M-12 40V20" stroke-dasharray="4 3"></path><path d="M20 -14H24L27 -18L30 -10L33 -18L36 -10L39 -14H43"></path><g data-symbol-part="reverse-check"><path d="M-32 0V29H-9M7 29H32V0M-1 23L5 29L-1 35"></path><circle cx="-3" cy="29" r="4" fill="#f8fafc"></circle></g><text x="0" y="60" transform="translate(0,60) scale(1,1) rotate(0) translate(0,-60)">200.0 PSI margin</text></g></g><text class="component-label" x="0" y="-52">PC1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c40:A" aria-label="PC1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,136.6 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c40:B" aria-label="PC1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 1,123.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="1" y="57">X</text><circle data-port="c40:X" aria-label="PC1 port X" cx="-12" cy="40" r="6" class="port  "><title>X · 923.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(820,490)" class="component" data-component="SH1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-52" y="-42" width="104" height="74" fill="transparent" stroke="#5482aa" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Higher pressure A or B connects to C; the ball seals the lower-pressure inlet.</title><rect x="-28" y="-18" width="56" height="36" fill="#f8fafc"></rect><path d="M-45 0H-22M22 0H45M0 -40V-18M-12 -10L-22 0L-12 10M12 -10L22 0L12 10"></path><circle data-symbol-part="shuttle-ball" cx="12" r="7" fill="#f8fafc"></circle><text x="0" y="48" transform="translate(0,48) scale(1,1) rotate(0) translate(0,-48)">A → C</text></g></g><text class="component-label" x="0" y="-56">SH1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c41:A" aria-label="SH1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 923.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c41:B" aria-label="SH1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 1.3 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="-49">C</text><circle data-port="c41:C" aria-label="SH1 port C" cx="0" cy="-40" r="6" class="port  "><title>C · 923.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(530,510)" class="component" data-component="LS1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-38" width="124" height="82" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Three-way system bypass opens P to T above external load signal X plus spring margin.</title><path d="M-45 0H-20M20 0H45"></path><rect x="-20" y="-20" width="40" height="40" fill="#f8fafc"></rect><path d="M-12 0L12 0" marker-end="url(#arrow)"></path><path data-symbol-part="compensation-feedback" d="M-32 0V-32H0V-20" stroke-dasharray="4 3"></path><path data-symbol-part="external-load-pilot" d="M0 40V20" stroke-dasharray="4 3"></path><path d="M20 -14H24L27 -18L30 -10L33 -18L36 -10L39 -14H43"></path><text x="0" y="60" transform="translate(0,60) scale(1,1) rotate(0) translate(0,-60)">BYPASS · 200.0 PSI margin</text></g></g><text class="component-label" x="0" y="-52">LS1</text><g><text class="port-label" x="-58" y="4">P</text><circle data-port="c42:P" aria-label="LS1 port P" cx="-45" cy="0" r="6" class="port  "><title>P · 1,137.6 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">T</text><circle data-port="c42:T" aria-label="LS1 port T" cx="45" cy="0" r="6" class="port  "><title>T · 0.7 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="57">X</text><circle data-port="c42:X" aria-label="LS1 port X" cx="0" cy="40" r="6" class="port  "><title>X · 923.9 PSI · Drag to connect</title></circle></g></g></g></svg>
+<svg class="canvas" aria-label="Hydraulic schematic canvas" xmlns="http://www.w3.org/2000/svg" width="960" height="700"><style>/* src/style.css */
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    sans-serif;
+  color: #263543;
+  background: #f3f5f7;
+  font-size: 13px;
+}
+button,
+input,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #cbd4dd;
+  border-radius: 3px;
+  padding: 7px 10px;
+  color: #263543;
+}
+button:hover {
+  background: #eaf0f5;
+  border-color: #8ba2b8;
+}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid #3978b0;
+  outline-offset: 2px;
+}
+.app {
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  min-height: 550px;
+}
+header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 14px 18px;
+  background: #fff;
+  border-bottom: 1px solid #ccd5dd;
+  min-height: 74px;
+}
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  min-width: 192px;
+}
+.brandmark {
+  background: #244f72;
+  color: white;
+  font-size: 24px;
+  font-weight: 800;
+  padding: 5px 12px;
+  border-radius: 3px;
+}
+.brand strong {
+  font-size: 21px;
+  letter-spacing: -.7px;
+}
+.version {
+  margin-left: 8px;
+  font-size: 11px;
+  font-weight: 400;
+  color: #8794a0;
+  white-space: nowrap;
+}
+.brand small {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 1.3px;
+  color: #6d7e8d;
+  margin-top: 2px;
+}
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.primary,
+button.active {
+  color: white;
+  background: #245d88;
+  border-color: #245d88;
+}
+.primary:hover,
+button.active:hover {
+  background: #194b72;
+}
+.toolbar label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-left: 8px;
+}
+.toolbar select {
+  padding: 6px;
+  border: 1px solid #cbd4dd;
+  border-radius: 3px;
+}
+.separator {
+  height: 24px;
+  border-left: 1px solid #d9e0e6;
+  margin: 0 5px;
+}
+.runstatus {
+  margin-left: auto;
+  font-size: 10px;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.runstatus i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #99a5b0;
+}
+.runstatus i.live {
+  background: #289967;
+}
+main {
+  display: grid;
+  grid-template-columns: 212px minmax(300px, 1fr) 264px;
+  flex: 1;
+  min-height: 0;
+}
+.palette,
+.inspector {
+  overflow-y: auto;
+  background: white;
+  padding: 18px 14px;
+}
+.palette {
+  border-right: 1px solid #d4dce3;
+}
+.inspector {
+  border-left: 1px solid #d4dce3;
+  padding: 18px;
+}
+.panel-title {
+  font-size: 10px;
+  letter-spacing: 1.4px;
+  color: #688095;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+.muted {
+  color: #6b7a88;
+  font-size: 12px;
+  line-height: 1.65;
+}
+.palette h3 {
+  margin: 20px 0 7px;
+  font-size: 11px;
+  color: #506577;
+}
+.palette section button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  text-align: left;
+  border: 0;
+  padding: 8px 3px;
+  background: transparent;
+  font-size: 12px;
+}
+.palette section button:hover {
+  background: #edf3f8;
+}
+.mini {
+  flex: 0 0 26px;
+  text-align: center;
+  font-size: 21px;
+  line-height: 18px;
+  color: #42647e;
+}
+.palette-note {
+  font-size: 10px;
+  line-height: 1.7;
+  color: #8794a0;
+  padding-top: 22px;
+}
+.workspace {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+.canvasbar {
+  height: 44px;
+  flex-shrink: 0;
+  padding: 7px 12px;
+  background: #f0f4f7;
+  border-bottom: 1px solid #d8e0e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #657686;
+}
+.canvasbar &gt; div {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.canvasbar button {
+  padding: 3px 7px;
+  font-size: 11px;
+}
+.canvas {
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  touch-action: none;
+  user-select: none;
+}
+.component {
+  cursor: move;
+}
+.component-label {
+  font-size: 12px;
+  font-weight: 650;
+  fill: #263543;
+  text-anchor: middle;
+}
+.symbol text {
+  stroke: none;
+  fill: #526577;
+  font-size: 10px;
+  text-anchor: middle;
+  font-family: system-ui;
+}
+.symbol {
+  pointer-events: none;
+}
+.port {
+  fill: white;
+  stroke: #55758f;
+  stroke-width: 1.8;
+  cursor: crosshair;
+}
+.port:hover,
+.port-active {
+  fill: #2b9569;
+  stroke: #23784d;
+}
+.port.compatible {
+  stroke: #2b9569;
+  stroke-width: 2.5;
+}
+.port-label {
+  font-size: 9px;
+  text-anchor: middle;
+  fill: #5a7287;
+  pointer-events: none;
+}
+.hose {
+  cursor: pointer;
+}
+.line-value {
+  font-size: 10px;
+  fill: #344d64;
+  paint-order: stroke;
+  stroke: #f8fafc;
+  stroke-width: 4px;
+}
+.instrument-overlay {
+  font-size: 10px;
+  fill: #315d80;
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: #f8fafc;
+  stroke-width: 6px;
+  pointer-events: none;
+}
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  background: #fff;
+  border-top: 1px solid #d4dce3;
+  font-size: 10px;
+  padding: 11px 8px;
+  color: #617181;
+}
+.legend span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.legend i {
+  height: 3px;
+  width: 17px;
+}
+.flow-key {
+  color: #8794a0;
+}
+.canvas-help {
+  font-size: 10px;
+  color: #788895;
+  padding: 7px 10px;
+  text-align: center;
+  border-top: 1px solid #e4e9ee;
+  background: #f6f8fa;
+}
+.inspector h2 {
+  font-size: 17px;
+  line-height: 1.4;
+  margin: 0 0 18px;
+  font-weight: 600;
+}
+.inspector h3 {
+  font-size: 11px;
+  font-weight: 650;
+  color: #567087;
+  margin: 22px 0 12px;
+}
+.inspector p {
+  line-height: 1.7;
+}
+.field {
+  display: block;
+  font-size: 11px;
+  color: #526779;
+  margin: 14px 0;
+}
+.field input,
+.field select {
+  display: block;
+  margin-top: 6px;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #cbd4dd;
+  border-radius: 3px;
+  color: #263543;
+  background: #fff;
+}
+.readings {
+  border-top: 1px solid #dee5eb;
+  border-bottom: 1px solid #dee5eb;
+  padding: 7px 0;
+}
+.readings &gt; div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 0;
+  font-size: 11px;
+  color: #718292;
+}
+.readings strong {
+  color: #2e526e;
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.spool {
+  display: flex;
+  gap: 3px;
+}
+.spool button {
+  flex: 1;
+  padding: 7px 3px;
+  font-size: 11px;
+}
+.inline-controls .spool button {
+  font-size: 9px;
+  padding: 4px 2px;
+}
+.wide {
+  width: 100%;
+  margin: 6px 0;
+}
+.danger {
+  color: #ae4545;
+  margin-top: 24px;
+  border-color: #dfcaca;
+}
+input[type=range] {
+  width: 100%;
+  accent-color: #245d88;
+}
+.guide {
+  border-top: 1px solid #dbe3e9;
+  margin-top: 22px;
+}
+.guide ol {
+  padding-left: 18px;
+  font-size: 12px;
+  line-height: 1.7;
+  color: #5e7181;
+}
+.guide li {
+  padding: 5px 0;
+}
+.tip {
+  border-left: 3px solid #7b9db8;
+  padding: 10px 12px;
+  background: #f0f5f9;
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 24px;
+  color: #597186;
+}
+@media (max-width: 1150px) {
+  header {
+    gap: 15px;
+  }
+  .runstatus {
+    display: none;
+  }
+  main {
+    grid-template-columns: 185px minmax(300px, 1fr) 225px;
+  }
+  .toolbar button {
+    font-size: 11px;
+  }
+  .brand {
+    min-width: 175px;
+  }
+  .legend {
+    gap: 9px;
+  }
+}
+@media (max-width: 820px) {
+  header {
+    flex-wrap: wrap;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+  .brand {
+    min-width: 100%;
+  }
+  .app {
+    min-height: 700px;
+    min-width: 650px;
+  }
+  main {
+    grid-template-columns: 145px minmax(280px, 1fr) 205px;
+  }
+  .palette {
+    padding: 15px 8px;
+  }
+  .palette section button {
+    font-size: 10px;
+  }
+  .canvasbar &gt; span {
+    display: none;
+  }
+  .inspector {
+    padding: 15px 12px;
+  }
+  .canvas-help {
+    font-size: 9px;
+  }
+}
+.layout-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+.layout-controls button {
+  padding: 7px 4px;
+  font-size: 11px;
+}
+.layout-controls button:last-child {
+  grid-column: 1 / -1;
+}
+</style><defs><pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="0" cy="0" r="0.9" fill="#cdd6df"></circle></pattern><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#263543"></path></marker></defs><rect class="grid-bg" width="100%" height="100%" fill="#f8fafc"></rect><g transform="translate(46.15384615384615,86.92307692307689) scale(0.9230769230769231)"><rect class="grid-bg" x="-120" y="-100" width="1300" height="1000" fill="url(#grid)"></rect><g class="hose"><title>0.0 PSI · 8.0 GPM · forward</title><path d="M140 470L140 446H71V330L95 330" stroke="transparent" stroke-width="16" fill="none"></path><path d="M140 470L140 446H71V330L95 330" stroke="#289967" stroke-width="3" fill="none"></path><path d="M140 470L140 446H71V330L95 330" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2619.946789683477" fill="none"></path><text class="line-value" x="124.5" y="392"></text></g><g class="hose"><title>1,138.8 PSI · 8.0 GPM · forward</title><path d="M185 330L209 330H237.5V330H266L290 330" stroke="transparent" stroke-width="16" fill="none"></path><path d="M185 330L209 330H237.5V330H266L290 330" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M185 330L209 330H237.5V330H266L290 330" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2619.946789683477" fill="none"></path><text class="line-value" x="244.5" y="322"></text></g><g class="hose"><title>1,138.6 PSI · 1.5 GPM · forward</title><path d="M370 330L394 330H412.5V330H431L455 330" stroke="transparent" stroke-width="16" fill="none"></path><path d="M370 330L394 330H412.5V330H431L455 330" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M370 330L394 330H412.5V330H431L455 330" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1098.9164372511748" fill="none"></path><text class="line-value" x="419.5" y="322"></text></g><g class="hose"><title>1,138.9 PSI · 0.0 GPM · forward · static</title><path d="M330 360L330 384H261V500L285 500" stroke="transparent" stroke-width="16" fill="none"></path><path d="M330 360L330 384H261V500L285 500" stroke="#dc4144" stroke-width="3" fill="none"></path><text class="line-value" x="314.5" y="422"></text></g><g class="hose"><title>1,138.9 PSI · 0.0 GPM · forward · static</title><path d="M290 330L266 330V224H330L330 200" stroke="transparent" stroke-width="16" fill="none"></path><path d="M290 330L266 330V224H330L330 200" stroke="#dc4144" stroke-width="3" fill="none"></path><text class="line-value" x="317" y="257"></text></g><g class="hose"><title>0.0 PSI · 0.0 GPM · forward · static</title><path d="M375 500L399 500V446H140L140 470" stroke="transparent" stroke-width="16" fill="none"></path><path d="M375 500L399 500V446H140L140 470" stroke="#9ba5b0" stroke-width="3" fill="none"></path><text class="line-value" x="264.5" y="477"></text></g><g class="hose"><title>1,138.3 PSI · 1.5 GPM · forward</title><path d="M545 330L569 330V359H650L650 335" stroke="transparent" stroke-width="16" fill="none"></path><path d="M545 330L569 330V359H650L650 335" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M545 330L569 330V359H650L650 335" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1098.9164372511748" fill="none"></path><text class="line-value" x="604.5" y="324.5"></text></g><g class="hose"><title>0.1 PSI · 1.1 GPM · forward</title><path d="M710 335L710 359V402.5H140V446L140 470" stroke="transparent" stroke-width="16" fill="none"></path><path d="M710 335L710 359V402.5H140V446L140 470" stroke="#287cc5" stroke-width="3" fill="none"></path><path d="M710 335L710 359V402.5H140V446L140 470" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1011.3263879463816" fill="none"></path><text class="line-value" x="432" y="394.5"></text></g><g class="hose"><title>924.0 PSI · 1.5 GPM · forward</title><path d="M705 140L729 140V134H780L780 110" stroke="transparent" stroke-width="16" fill="none"></path><path d="M705 140L729 140V134H780L780 110" stroke="#bb930a" stroke-width="3" fill="none"></path><path d="M705 140L729 140V134H780L780 110" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1098.9164372511748" fill="none"></path><text class="line-value" x="749.5" y="117"></text></g><g class="hose"><title>1.3 PSI · 1.1 GPM · reverse</title><path d="M710 265L710 241V187.5H860V134L860 110" stroke="transparent" stroke-width="16" fill="none"></path><path d="M710 265L710 241V187.5H860V134L860 110" stroke="#287cc5" stroke-width="3" fill="none"></path><path d="M710 265L710 241V187.5H860V134L860 110" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="1011.3263879463816" fill="none"></path><text class="line-value" x="792" y="179.5"></text></g><g class="hose"><title>1,136.7 PSI · 1.5 GPM · forward</title><path d="M650 265L650 241H421V140L445 140" stroke="transparent" stroke-width="16" fill="none"></path><path d="M650 265L650 241H421V140L445 140" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M650 265L650 241H421V140L445 140" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1098.9164372511748" fill="none"></path><text class="line-value" x="554.5" y="194.5"></text></g><g class="hose"><title>1,123.8 PSI · 1.5 GPM · forward</title><path d="M535 140L559 140H575V140H591L615 140" stroke="transparent" stroke-width="16" fill="none"></path><path d="M535 140L559 140H575V140H591L615 140" stroke="#bb930a" stroke-width="3" fill="none"></path><path d="M535 140L559 140H575V140H591L615 140" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-1098.9164372511748" fill="none"></path><text class="line-value" x="582" y="132"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M780 110L780 134H629V204H478L478 180" stroke="transparent" stroke-width="16" fill="none"></path><path d="M780 110L780 134H629V204H478L478 180" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="636" y="137"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M780 110L780 134H751V490L775 490" stroke="transparent" stroke-width="16" fill="none"></path><path d="M780 110L780 134H751V490L775 490" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="784.5" y="292"></text></g><g class="hose"><title>1.3 PSI · 0.0 GPM · forward · static</title><path d="M860 110L860 134H889V490L865 490" stroke="transparent" stroke-width="16" fill="none"></path><path d="M860 110L860 134H889V490L865 490" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="869.5" y="292"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M820 450L820 426H675V574H530L530 550" stroke="transparent" stroke-width="16" fill="none"></path><path d="M820 450L820 426H675V574H530L530 550" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="682" y="492"></text></g><g class="hose"><title>1,137.9 PSI · 6.5 GPM · forward</title><path d="M290 330L266 330H363.5V510H461L485 510" stroke="transparent" stroke-width="16" fill="none"></path><path d="M290 330L266 330H363.5V510H461L485 510" stroke="#dc4144" stroke-width="3" fill="none"></path><path d="M290 330L266 330H363.5V510H461L485 510" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2269.586592464305" fill="none"></path><text class="line-value" x="394.5" y="412"></text></g><g class="hose"><title>0.3 PSI · 6.5 GPM · forward</title><path d="M575 510L599 510V446H140L140 470" stroke="transparent" stroke-width="16" fill="none"></path><path d="M575 510L599 510V446H140L140 470" stroke="#287cc5" stroke-width="3" fill="none"></path><path d="M575 510L599 510V446H140L140 470" stroke="white" stroke-width="2" stroke-dasharray="2 19" stroke-dashoffset="-2269.586592464305" fill="none"></path><text class="line-value" x="364.5" y="482"></text></g><g class="hose"><title>923.9 PSI · 0.0 GPM · forward · static</title><path d="M820 450L820 426H480V236H140L140 260" stroke="transparent" stroke-width="16" fill="none"></path><path d="M820 450L820 426H480V236H140L140 260" stroke="#df792b" stroke-width="3" stroke-dasharray="6 4" fill="none"></path><text class="line-value" x="487" y="347"></text></g><g transform="translate(140,500)" class="component" data-component="T1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-32 -25V15H32V-25M0 -30V-5M-24 5H24"></path><text x="0" y="52" transform="translate(0,52) scale(1,1) rotate(0) translate(0,-52)">0.0 PSI</text></g></g><text class="component-label" x="0" y="-66">T1</text><g><text class="port-label" x="13" y="-39">T</text><circle data-port="c31:T" aria-label="T1 port T" cx="0" cy="-30" r="6" class="port  "><title>T · 0.0 PSI · Drag to connect</title></circle></g></g><g transform="translate(140,330)" class="component" data-component="VP1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-74" width="124" height="106" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-45 0H-26M26 0H45"></path><circle r="26" fill="#f8fafc"></circle><path d="M7 -10L22 0L7 10Z" fill="currentColor"></path><path data-symbol-part="pump-pilot" d="M0 -70V-58" stroke-dasharray="4 3"></path><rect x="-12" y="-58" width="24" height="18" fill="#f8fafc"></rect><path d="M-12 -52L0 -42L12 -52M0 -40V-28"></path><path d="M-28 28L28 -28" marker-end="url(#arrow)"></path><circle cx="-10" r="4" fill="#289967" stroke="none"></circle><text x="0" y="52" transform="translate(0,52) scale(1,1) rotate(0) translate(0,-52)">100.0% STROKE</text></g></g><text class="component-label" x="0" y="-106">VP1</text><g><text class="port-label" x="-58" y="4">T</text><circle data-port="c32:T" aria-label="VP1 port T" cx="-45" cy="0" r="6" class="port  "><title>T · 0.0 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">P</text><circle data-port="c32:P" aria-label="VP1 port P" cx="45" cy="0" r="6" class="port  "><title>P · 1,138.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="-79">X</text><circle data-port="c32:X" aria-label="VP1 port X" cx="0" cy="-70" r="6" class="port  "><title>X · 923.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(330,330)" class="component" data-component="J1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-40 0H40M0 0V30"></path><circle r="5" fill="currentColor"></circle></g></g><text class="component-label" x="0" y="-46">J1</text><g><text class="port-label" x="-53" y="4">P</text><circle data-port="c33:P" aria-label="J1 port P" cx="-40" cy="0" r="6" class="port  "><title>P · 1,138.2 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="53" y="4">A</text><circle data-port="c33:A" aria-label="J1 port A" cx="40" cy="0" r="6" class="port  "><title>A · 1,138.7 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="47">T</text><circle data-port="c33:T" aria-label="J1 port T" cx="0" cy="30" r="6" class="port  "><title>T · 1,138.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(330,500)" class="component" data-component="RV1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-55" width="124" height="92" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Normally closed; upstream pressure A controls opening.</title><path d="M-45 0H-20M20 0H45"></path><rect x="-20" y="-20" width="40" height="40" fill="#f8fafc"></rect><path d="M-14 9L14 9" marker-end="url(#arrow)"></path><g data-symbol-part="adjustable-spring"><path d="M0 -20V-27L-6 -30L6 -34L-6 -38L6 -42L0 -45V-51"></path><path d="M-13 -27L13 -49" marker-end="url(#arrow)"></path></g><path data-symbol-part="pressure-pilot" data-sensed-port="A" d="M-32 0V32H0V20" stroke-dasharray="4 3"></path><circle cx="-32" r="2.5" fill="currentColor" stroke="none"></circle><text x="0" y="57" transform="translate(0,57) scale(1,1) rotate(0) translate(0,-57)">1,500.0 PSI</text></g></g><text class="component-label" x="0" y="-69">RV1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c34:A" aria-label="RV1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,138.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c34:B" aria-label="RV1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 0.0 PSI · Drag to connect</title></circle></g></g><g transform="translate(330,170)" class="component" data-component="PT1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><circle cy="-5" r="23" fill="#f8fafc"></circle><path d="M0 18V30"></path><path d="M0 -5L12 -19" marker-end="url(#arrow)"></path><circle cy="-5" r="2" fill="currentColor"></circle><text x="0" y="72" transform="translate(0,72) scale(1,1) rotate(0) translate(0,-72)">1,138.9 PSI</text></g></g><text class="component-label" x="0" y="-46">PT1</text><g><text class="port-label" x="13" y="47">P</text><circle data-port="c35:P" aria-label="PT1 port P" cx="0" cy="30" r="6" class="port  "><title>P · 1,138.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(500,330)" class="component" data-component="FM1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-45 0H-23M23 0H45"></path><circle r="23" fill="#f8fafc"></circle><path d="M-13 -9L0 9L13 -9ZM-10 0H10"></path></g></g><text class="component-label" x="0" y="-46">FM1</text><text class="instrument-overlay" y="52">1.5 GPM</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c36:A" aria-label="FM1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,138.5 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c36:B" aria-label="FM1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 1,138.4 PSI · Drag to connect</title></circle></g></g><g transform="translate(680,300)" class="component" data-component="DCV1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-131" y="-38" width="160" height="76" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Manual directional valve. Highlighted position is aligned with the connected ports.</title><g transform="translate(-80,0)" data-spool-position="0" data-active="false"><rect x="-20" y="-23" width="40" height="46" fill="#f8fafc"></rect><path d="M-10 23L10 -23" marker-end="url(#arrow)"></path><path d="M-10 -23L10 23" marker-end="url(#arrow)"></path></g><g transform="translate(-40,0)" data-spool-position="1" data-active="false"><rect x="-20" y="-23" width="40" height="46" fill="#f8fafc"></rect><path d="M-10 -23V-12M-16 -12H-4"></path><path d="M10 -23V-12M4 -12H16"></path><path d="M-10 23V12M-16 12H-4"></path><path d="M10 23V12M4 12H16"></path></g><g transform="translate(0,0)" data-spool-position="2" data-active="true"><rect x="-20" y="-23" width="40" height="46" fill="#dce9f7"></rect><path d="M-10 23L-10 -23" marker-end="url(#arrow)"></path><path d="M10 -23L10 23" marker-end="url(#arrow)"></path></g><path d="M-30 -35V-29H-10V-23M-30 35V29H-10V23M30 35V29H10V23"></path><path d="M30 -35V-29H10V-23"></path><g data-symbol-part="manual-lever"><path d="M-100 0H-109L-122 -18"></path><circle cx="-122" cy="-18" r="3" fill="currentColor"></circle></g><path d="M20 0H27"></path><text x="0" y="77" transform="translate(0,77) scale(1,1) rotate(0) translate(0,-77)">EXTEND</text></g></g><text class="component-label" x="0" y="-71">DCV1</text><g><text class="port-label" x="-17" y="52">P</text><circle data-port="c37:P" aria-label="DCV1 port P" cx="-30" cy="35" r="6" class="port  "><title>P · 1,138.2 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="43" y="52">T</text><circle data-port="c37:T" aria-label="DCV1 port T" cx="30" cy="35" r="6" class="port  "><title>T · 0.1 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="-17" y="-44">A</text><circle data-port="c37:A" aria-label="DCV1 port A" cx="-30" cy="-35" r="6" class="port  "><title>A · 1,136.7 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="43" y="-44">B</text><circle data-port="c37:B" aria-label="DCV1 port B" cx="30" cy="-35" r="6" class="port  "><title>B · 1.2 PSI · Drag to connect</title></circle></g><foreignObject x="-75" y="89" width="150" height="30"><div class="inline-controls"><div class="spool"><button class="">Retract</button><button class="">Neutral</button><button class="active">Extend</button></div></div></foreignObject></g><g transform="translate(660,140)" class="component" data-component="OR1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="124" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M-45 0H-8M8 0H45M-14 -14Q8 0 -14 14M14 -14Q-8 0 14 14"></path><text x="0" y="52" transform="translate(0,52) scale(1,1) rotate(0) translate(0,-52)">1.5 GPM nominal</text></g></g><text class="component-label" x="0" y="-46">OR1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c38:A" aria-label="OR1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,123.8 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c38:B" aria-label="OR1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 924.1 PSI · Drag to connect</title></circle></g></g><g transform="translate(820,80)" class="component" data-component="CYL1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-32" width="190" height="64" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><rect x="-50" y="-24" width="100" height="44" fill="#f8fafc" stroke="none"></rect><path d="M50 -3V-24H-50V20H50V3M-40 30V20"></path><path d="M40 30V20"></path><path data-symbol-part="piston" d="M-16 -22V18" stroke-width="3"></path><path data-symbol-part="rod" d="M-16 -3H76V3H-16" stroke-width="2.2"></path><text x="0" y="72" transform="translate(0,72) scale(1,1) rotate(0) translate(0,-72)">3.0 in</text></g></g><text class="component-label" x="0" y="-46">CYL1</text><g><text class="port-label" x="-27" y="47">A</text><circle data-port="c39:A" aria-label="CYL1 port A" cx="-40" cy="30" r="6" class="port  "><title>A · 923.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="53" y="47">B</text><circle data-port="c39:B" aria-label="CYL1 port B" cx="40" cy="30" r="6" class="port  "><title>B · 1.3 PSI · Drag to connect</title></circle></g></g><g transform="translate(490,140)" class="component" data-component="PC1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-38" width="124" height="82" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Two-way regulator senses B against external X plus spring margin; optional reverse check.</title><path d="M-45 0H-20M20 0H45"></path><rect x="-20" y="-20" width="40" height="40" fill="#f8fafc"></rect><path d="M-12 0L12 0" marker-end="url(#arrow)"></path><path data-symbol-part="compensation-feedback" d="M32 0V-32H0V-20" stroke-dasharray="4 3"></path><path data-symbol-part="external-load-pilot" d="M-12 40V20" stroke-dasharray="4 3"></path><path d="M20 -14H24L27 -18L30 -10L33 -18L36 -10L39 -14H43"></path><g data-symbol-part="reverse-check"><path d="M-32 0V29H-9M7 29H32V0M-1 23L5 29L-1 35"></path><circle cx="-3" cy="29" r="4" fill="#f8fafc"></circle></g><text x="0" y="82" transform="translate(0,82) scale(1,1) rotate(0) translate(0,-82)">200.0 PSI margin</text></g></g><text class="component-label" x="0" y="-52">PC1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c40:A" aria-label="PC1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 1,136.6 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c40:B" aria-label="PC1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 1,123.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="1" y="57">X</text><circle data-port="c40:X" aria-label="PC1 port X" cx="-12" cy="40" r="6" class="port  "><title>X · 923.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(820,490)" class="component" data-component="SH1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-52" y="-42" width="104" height="74" fill="transparent" stroke="#5482aa" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Higher pressure A or B connects to C; the ball seals the lower-pressure inlet.</title><rect x="-28" y="-18" width="56" height="36" fill="#f8fafc"></rect><path d="M-45 0H-22M22 0H45M0 -40V-18M-12 -10L-22 0L-12 10M12 -10L22 0L12 10"></path><circle data-symbol-part="shuttle-ball" cx="12" r="7" fill="#f8fafc"></circle><text x="0" y="52" transform="translate(0,52) scale(1,1) rotate(0) translate(0,-52)">A → C</text></g></g><text class="component-label" x="0" y="-76">SH1</text><g><text class="port-label" x="-58" y="4">A</text><circle data-port="c41:A" aria-label="SH1 port A" cx="-45" cy="0" r="6" class="port  "><title>A · 923.9 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">B</text><circle data-port="c41:B" aria-label="SH1 port B" cx="45" cy="0" r="6" class="port  "><title>B · 1.3 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="-49">C</text><circle data-port="c41:C" aria-label="SH1 port C" cx="0" cy="-40" r="6" class="port  "><title>C · 923.9 PSI · Drag to connect</title></circle></g></g><g transform="translate(530,510)" class="component" data-component="LS1"><g class="component-geometry" transform="rotate(0) scale(1,1)"><rect class="component-hit" x="-62" y="-38" width="124" height="82" fill="transparent" stroke="none" stroke-dasharray="4 3"></rect><g class="symbol" style="color: rgb(38, 53, 67);" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><title>Three-way system bypass opens P to T above external load signal X plus spring margin.</title><path d="M-45 0H-20M20 0H45"></path><rect x="-20" y="-20" width="40" height="40" fill="#f8fafc"></rect><path d="M-12 0L12 0" marker-end="url(#arrow)"></path><path data-symbol-part="compensation-feedback" d="M-32 0V-32H0V-20" stroke-dasharray="4 3"></path><path data-symbol-part="external-load-pilot" d="M0 40V20" stroke-dasharray="4 3"></path><path d="M20 -14H24L27 -18L30 -10L33 -18L36 -10L39 -14H43"></path><text x="0" y="82" transform="translate(0,82) scale(1,1) rotate(0) translate(0,-82)">BYPASS · 200.0 PSI margin</text></g></g><text class="component-label" x="0" y="-52">LS1</text><g><text class="port-label" x="-58" y="4">P</text><circle data-port="c42:P" aria-label="LS1 port P" cx="-45" cy="0" r="6" class="port  "><title>P · 1,137.6 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="58" y="4">T</text><circle data-port="c42:T" aria-label="LS1 port T" cx="45" cy="0" r="6" class="port  "><title>T · 0.7 PSI · Drag to connect</title></circle></g><g><text class="port-label" x="13" y="57">X</text><circle data-port="c42:X" aria-label="LS1 port X" cx="0" cy="40" r="6" class="port  "><title>X · 923.9 PSI · Drag to connect</title></circle></g></g></g></svg>

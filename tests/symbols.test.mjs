@@ -16,6 +16,19 @@ function markup(o,s=initial()){return renderToStaticMarkup(React.createElement(S
 function drawing(o,s){return new JSDOM(`<svg xmlns="http://www.w3.org/2000/svg">${markup(o,s)}</svg>`).window.document;}
 const activeBox=doc=>doc.querySelector('[data-active="true"]');
 
+test('readouts and valve states clear port labels through every rotation and flip',()=>{
+ for(const kind of Object.keys(catalog))for(const rotation of [0,90,180,270])for(const flipX of [false,true])for(const flipY of [false,true]){
+  const o={...create(kind,0,0),rotation,flipX,flipY},doc=drawing(o);
+  const transform=(x,y)=>{const a=rotation*Math.PI/180,c=Math.round(Math.cos(a)),s=Math.round(Math.sin(a));x*=flipX?-1:1;y*=flipY?-1:1;return {x:c*x-s*y,y:s*x+c*y}};
+  const bottom=Math.max(...ports(kind).map(p=>transform(p.x,p.y).y));
+  for(const text of doc.querySelectorAll('text')){
+   if(text.textContent==='N₂')continue;
+   const anchor=transform(Number(text.getAttribute('x')),Number(text.getAttribute('y')));
+   assert.equal(Math.abs(anchor.x),0,`${kind} readout stays centered`);
+   assert.ok(anchor.y>=bottom+40,`${kind} ${rotation} readout clears ports`);
+  }
+ }
+});
 test('reducing valve senses downstream B; relief senses upstream A; springs are solid',()=>{
  for(const kind of ['reducing','relief']){
   const o=create(kind,0,0),doc=drawing(o),pilot=doc.querySelector('[data-symbol-part="pressure-pilot"]');

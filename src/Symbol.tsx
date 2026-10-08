@@ -1,7 +1,9 @@
 import {Component, State, fmt} from './model';
 import type {SVGProps} from 'react';
+import {annotationBounds,inversePoint} from './layout';
 
-function UprightText({o,x=0,y=0,...props}:SVGProps<SVGTextElement>&{o:Component}) {
+function UprightText({o,x=0,y=0,internal=false,...props}:SVGProps<SVGTextElement>&{o:Component;internal?:boolean}) {
+ if(!internal){const anchor=inversePoint(o,{x:0,y:annotationBounds(o,symbolBounds(o)).bottom+20});x=anchor.x;y=anchor.y;}
  return <text {...props} x={x} y={y} transform={`translate(${x},${y}) scale(${o.flipX?-1:1},${o.flipY?-1:1}) rotate(${-(o.rotation||0)}) translate(${-Number(x)},${-Number(y)})`}/>;
 }
 
@@ -29,6 +31,7 @@ export function symbolBounds(o:Component) {
     const right = left+count*40;
     return {x:left-31, y:-38, width:right-left+40, height:76};
   }
+  if(['relief','reducing'].includes(o.kind))return {x:-62,y:-55,width:124,height:92};
   if(['compensator','lsBypass'].includes(o.kind))return {x:-62,y:-38,width:124,height:82};
   if(o.kind==='shuttle')return {x:-52,y:-42,width:104,height:74};
   if(o.kind==='variablePump')return {x:-62,y:-74,width:124,height:106};
@@ -135,7 +138,7 @@ export function Symbol({o,s}:{o:Component;s:State}) {
   else if(k==='accumulator') body=<>
     <rect x="-21" y="-29" width="42" height="50" rx="20" fill={paper}/>
     <rect x="-14" y={15-(m?.charge||0)*17} width="28" height={(m?.charge||0)*17} fill="#dc4144" stroke="none"/>
-    <path d="M-21 -5H21M0 21V30"/><UprightText o={o} y="-12">N₂</UprightText>
+    <path d="M-21 -5H21M0 21V30"/><UprightText o={o} internal y="-12">N₂</UprightText>
   </>;
   else if(k==='junction') body=<><path d="M-40 0H40M0 0V30"/><circle r="5" fill="currentColor"/></>;
   else if(k==='cap') body=<path d="M0 30V0M-14 0H14M-14 -5H14"/>;

@@ -2,7 +2,7 @@ import React,{useEffect,useRef,useState} from 'react';
 import {createRoot} from 'react-dom/client';
 import {catalog,Kind,Component,Circuit,State,colors,fmt,ports,create,demo,loadSensingDemo,isPilotLine,initial,step,remove} from './model';
 import {Symbol,symbolBounds} from './Symbol';
-import {orientation,placedPort,transformedBounds} from './layout';
+import {orientation,placedPort,annotationBounds} from './layout';
 import './style.css';
 import {version} from '../package.json';
 const groups:[string,Kind[]][]=[['Sources & storage',['tank','pump','variablePump','accumulator']],['Actuators',['cylinder','singleCylinder','motor']],['Directional valves',['valve22','valve32','valve42','valve43']],['Pressure & flow',['relief','reducing','restriction','flowControl','check','filter']],['Compensation & load sensing',['compensator','compensatedFlow','lsBypass','shuttle']],['Measurement & utilities',['gauge','meter','junction','cap']]];
@@ -28,7 +28,7 @@ function App(){
  const update=(o:Component,key:string,value:number|string|boolean)=>setC(old=>({...old,components:old.components.map(x=>x.id===o.id?{...x,p:{...x.p,[key]:value,...(key==='bore'&&typeof value==='number'?{rod:Math.min(Number(x.p.rod),value*0.95)}:{})}}:x)}));
  const changeLayout=(o:Component,change:Partial<Pick<Component,'rotation'|'flipX'|'flipY'>>)=>setC(old=>({...old,components:old.components.map(x=>x.id===o.id?{...x,...change}:x)}));
  const flipKey=(o:Component,horizontal:boolean):'flipX'|'flipY'=>((o.rotation||0)%180===90)!==horizontal?'flipX':'flipY';
- const bounds=(o:Component)=>transformedBounds(o,symbolBounds(o));
+ const bounds=(o:Component)=>annotationBounds(o,symbolBounds(o));
  const chosen=c.components.find(o=>o.id===selected);const selectedLine=c.lines.find(l=>l.id===selected);
  const add=(kind:Kind,x?:number,y?:number)=>{const r=svg.current!.getBoundingClientRect();const center=point(r.left+r.width/2,r.top+r.height/2);const o=create(kind,Math.round((x??center.x)/10)*10,Math.round((y??center.y)/10)*10);setC(old=>({...old,components:[...old.components,o]}));select(o.id)};
  const reset=()=>{setS(initial());sim.current=initial();setPhase(0);setS(step(c,initial(),0))};
@@ -52,10 +52,10 @@ function App(){
  {c.lines.map(l=>{const r=s.lines[l.id]||{flow:0,pressure:0,color:'inactive'};const a=endpoint(l.from),b=endpoint(l.to);const d=route(a,b);return <g key={l.id} className="hose" onPointerDown={e=>{e.stopPropagation();select(l.id)}}><title>{fmt(r.pressure)} PSI · {fmt(Math.abs(r.flow))} GPM · {r.flow<0?'reverse':'forward'}{Math.abs(r.flow)<0.001?' · static':''}</title><path d={d} stroke="transparent" strokeWidth="16" fill="none"/><path d={d} stroke={selected===l.id?'#142a44':colors[r.color]} strokeWidth={selected===l.id?5:3} strokeDasharray={isPilotLine(c,l)?'6 4':undefined} fill="none"/>{Math.abs(r.flow)>0.001&&<path d={d} stroke="white" strokeWidth="2" strokeDasharray="2 19" strokeDashoffset={-phase*Math.sign(r.flow)*(16+Math.min(15,Math.abs(r.flow))*5)} fill="none"/>}<text className="line-value" x={(a.x+b.x)/2+7} y={(a.y+b.y)/2-8}>{selected===l.id?`${fmt(r.pressure)} PSI · ${fmt(Math.abs(r.flow))} GPM`:''}</text></g>})}
  {wire&&<path d={route(endpoint(wire.from),wire)} stroke={hover?'#289967':'#487da9'} strokeWidth="2.5" fill="none" strokeDasharray="6 4"/>}
  {c.components.map(o=><g key={o.id} transform={`translate(${o.x},${o.y})`} className="component" data-component={o.label} onPointerDown={e=>{e.stopPropagation();select(o.id);const p=point(e.clientX,e.clientY);interaction.current={id:o.id,...p,ox:o.x,oy:o.y};svg.current!.setPointerCapture(e.pointerId)}}>
- <g className="component-geometry" transform={orientation(o)}><rect className="component-hit" {...symbolBounds(o)} fill="transparent" stroke={selected===o.id?'#5482aa':'none'} strokeDasharray="4 3"/><Symbol o={o} s={s}/></g><text className="component-label" x="0" y={Math.min(-43,bounds(o).y-14)}>{o.label}</text>
- {o.kind==='meter'&&<text className="instrument-overlay" y={Math.min(-38,bounds(o).y-4)}>{fmt(componentFlow(o))} GPM</text>}
+ <g className="component-geometry" transform={orientation(o)}><rect className="component-hit" {...symbolBounds(o)} fill="transparent" stroke={selected===o.id?'#5482aa':'none'} strokeDasharray="4 3"/><Symbol o={o} s={s}/></g><text className="component-label" x="0" y={bounds(o).top-14}>{o.label}</text>
+ {o.kind==='meter'&&<text className="instrument-overlay" y={bounds(o).bottom+20}>{fmt(componentFlow(o))} GPM</text>}
  {ports(o.kind).map(raw=>{const p=placedPort(o,raw);const key=o.id+':'+p.name;return <g key={p.name}><text className="port-label" x={p.x+(p.nx?p.nx*13:13)} y={p.y+(p.ny?p.ny*13:0)+4}>{p.name}</text><circle data-port={key} aria-label={`${o.label} port ${p.name}`} cx={p.x} cy={p.y} r={wire?8:6} className={`port ${wire?'compatible':''} ${hover===key||wire?.from===key?'port-active':''}`} onPointerEnter={()=>setHover(key)} onPointerLeave={()=>setHover(null)} onPointerDown={e=>{e.stopPropagation();const q=point(e.clientX,e.clientY);interaction.current=null;setWire({from:key,...q});svg.current!.setPointerCapture(e.pointerId)}}><title>{p.name} · {fmt(portReading(o,p.name))} PSI · Drag to connect</title></circle></g>})}
- {o.kind.startsWith('valve')&&<foreignObject x="-75" y={Math.max(65,bounds(o).y+bounds(o).height+26)} width="150" height="30"><div className="inline-controls" onPointerDown={e=>e.stopPropagation()}>{valveControls(o)}</div></foreignObject>}
+ {o.kind.startsWith('valve')&&<foreignObject x="-75" y={bounds(o).bottom+32} width="150" height="30"><div className="inline-controls" onPointerDown={e=>e.stopPropagation()}>{valveControls(o)}</div></foreignObject>}
  </g>)}
  </g></svg>
  <div className="legend">{Object.entries(colors).map(([k,v])=><span key={k}><i style={{background:v}}/>{k==='pressure'?'Pressure':k==='return'?'Return':k==='suction'?'Suction':k==='metered'?'Metered':k==='reduced'?'Reduced':'Inactive'}</span>)}<span className="flow-key">Moving dots = flowing oil</span></div><div className="canvas-help">Drag ports to connect · Drag components to move · Drag empty canvas to pan · Scroll to zoom · Delete to remove</div>
